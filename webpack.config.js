@@ -6,6 +6,11 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: "./index.html"
 });
 
+// const openbrowserplugin = require("open-browser-webpack-plugin");
+
+// // path module?
+// const path = require("path");
+
 module.exports = {
   module: {
     rules: [

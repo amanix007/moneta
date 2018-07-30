@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-console.log('index? ', document.getElementById("index"));
+import './index.scss';
+
 
 const Index = () => {
   return (
