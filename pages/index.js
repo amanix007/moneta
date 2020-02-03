@@ -1,3 +1,4 @@
+import Layout from '../components/Layout';
 import Card from '../components/Card';
 
 import cardsToReview from '../mock-data/deck';
@@ -40,10 +41,10 @@ function Home() {
 
   
   return (
-    <>
-      <div>Welcome to Moneta.js!</div>
+    <Layout>
+      <h1>Test mode</h1>
       {renderCurrentCard()}
-    </>
+    </Layout>
   );
 }
 

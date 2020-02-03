@@ -8,9 +8,11 @@ function Card(props) {
     <div className={`${displayName} ${displayName}__border`}>
       <div className={`${displayName}__flipper`}>
         <div className={`${displayName}__front`}>
+          <h3>Question:</h3>
           {props.front}
         </div>
         <div className={`${displayName}__back`}>
+          <h3>Answer:</h3>
           {props.back}
         </div>
       </div>
