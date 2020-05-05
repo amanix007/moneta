@@ -1,22 +1,30 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 
-function Card(props) {
+import { Front } from './Front';
+import { Back } from './Back';
+
+const Card = ({
+  front,
+  back,
+  onRating,
+}) => {
   const displayName = "Card";
 
-  return (
-    <div className={`${displayName} ${displayName}__border`}>
-      <div className={`${displayName}__flipper`}>
-        <div className={`${displayName}__front`}>
-          <h3>Question:</h3>
-          {props.front}
-        </div>
-        <div className={`${displayName}__back`}>
-          <h3>Answer:</h3>
-          {props.back}
-        </div>
-      </div>
-    </div>
+  const [guessMade, setGuessMade] = useState(false);
+
+  return guessMade ? (
+    <Back
+      data={back}
+      onRating={onRating}
+    />
+  ) : (
+    <Front
+      data={front}
+      onGuess={setGuessMade}
+    />
   );
 }
 

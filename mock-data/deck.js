@@ -14,7 +14,7 @@ const facts = [
   {
     question: "Who is your daddy and what does he do?",
     answer: "I'm a cop you idiot!",
-  }
+  },
 ];
 
 export default facts.map(fact => ({

@@ -1,28 +1,24 @@
+import React, {
+  useState,
+} from 'react';
+import fetch from 'isomorphic-unfetch';
 import Layout from '../components/Layout';
 import Card from '../components/Card';
 
-import cardsToReview from '../mock-data/deck';
+import deck from '../mock-data/deck';
 
 function Home() { 
-  // basic algorithm:
-  // filter if a card.reviewOn < new Date();
-  const now = Date.now();
-  const cardsInReview = cardsToReview.filter(card => card.reviewOn === null || card.reviewOn < now);
-  // set to cardsInReview
-  // while cardsInReview.length > 0
-  // render cardsInReview[0]
+  const now = new Date();
+
+  const [deckInReview, setDeckRatings] = useState(deck.filter(card => card.reviewOn < now));
 
   const renderCurrentCard = () => {
-    if (cardsInReview.length === 0) {
-      return (
-        <div>
-          <h2>You have nothing to review right now.</h2>
-        </div>
-      )
+    if (deckInReview.length === 0) {
+      return <h2>You have nothing to review right now.</h2>;
     }
 
     // Just grab first card
-    const [ currentCard ] = cardsInReview;
+    const [ currentCard ] = deckInReview;
 
     const {
       fact: {
@@ -35,10 +31,10 @@ function Home() {
       <Card
         front={question}
         back={answer}
+        onRating={setDeckRatings}
       />
     )
   }
-
   
   return (
     <Layout>
@@ -47,5 +43,17 @@ function Home() {
     </Layout>
   );
 }
+
+Home.getInitialProps = async function() {
+  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+  const data = await res.json();
+
+  console.log(`Show data fetched. Count: ${data.length}`);
+
+  return {
+    shows: data.map(entry => entry.show)
+  };
+};
+
 
 export default Home;
