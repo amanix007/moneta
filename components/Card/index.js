@@ -7,8 +7,8 @@ import { Front } from './Front';
 import { Back } from './Back';
 
 const Card = ({
-  front,
-  back,
+  question,
+  answer,
   onRating,
 }) => {
   const displayName = "Card";
@@ -17,12 +17,12 @@ const Card = ({
 
   return guessMade ? (
     <Back
-      data={back}
+      answer={answer}
       onRating={onRating}
     />
   ) : (
     <Front
-      data={front}
+      question={question}
       onGuess={setGuessMade}
     />
   );

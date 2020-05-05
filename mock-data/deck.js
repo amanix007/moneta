@@ -1,9 +1,12 @@
-import uniqid from 'uniqid';
+// import uniqueId from 'lodash/uniqueId';
+import { NEW } from '../constants/card';
+
 
 const cardDefaults = {
-  lastReviewed: null,
-  learnRating: 0,
-  reviewOn: null,
+  status: NEW,
+  // lastReviewed: null,
+  // learnRating: 0,
+  // reviewOn: null,
 };
 
 const facts = [
@@ -19,6 +22,6 @@ const facts = [
 
 export default facts.map(fact => ({
   ...cardDefaults,
-  fact,
-  id: uniqid(),
+  ...fact,
+  // id: uniqueId(),
 }));

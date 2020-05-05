@@ -1,14 +1,15 @@
 import React from 'react';
+import { LEARNING, LEARNED } from '../../constants/card';
 
 export const Back = ({
-  data,
+  answer,
   onRating,
 }) => (
   <div>
     <div>
-      {data}
+      {answer}
     </div>
-    <button onClick={() => onRating(true)}>Got it</button>
-    <button onClick={() => onRating(false)}>Wrong</button>
+    <button onClick={() => onRating(LEARNED)}>Got it</button>
+    <button onClick={() => onRating(LEARNING)}>Wrong</button>
   </div>
 );

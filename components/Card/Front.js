@@ -1,12 +1,12 @@
 import React from 'react';
 
 export const Front = ({
-  data,
+  question,
   onGuess,
 }) => (
   <div>
     <div>
-      {data}
+      {question}
     </div>
     <button onClick={() => onGuess(true)}>Guess</button>
   </div>
